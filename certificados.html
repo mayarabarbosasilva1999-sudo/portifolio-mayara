@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Portfólio | Acesse os meus certificados</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .cert-single-card {
+      background-color: #ebdceb;
+      border: 1px solid #7d6b82;
+      border-radius: 12px;
+      padding: 16px;
+      max-width: 380px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      text-decoration: none;
+      color: #1e1e1e;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 14px rgba(125, 107, 130, 0.12);
+      margin-bottom: 24px;
+    }
+    .cert-single-card:hover {
+      background-color: #e2cee2;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(125, 107, 130, 0.22);
+      border-color: #5c4b60;
+    }
+    .cert-image-wrapper {
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      background: #ffffff;
+      border: 1px solid rgba(125, 107, 130, 0.25);
+    }
+    .cert-image-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .cert-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #241629;
+      margin-bottom: 6px;
+    }
+    .cert-desc {
+      font-size: 12.5px;
+      color: #4f3f54;
+      line-height: 1.45;
+      margin-bottom: 14px;
+    }
+    .cert-btn-link {
+      background-color: #794a82;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 6px rgba(121, 74, 130, 0.25);
+      transition: background-color 0.2s ease;
+    }
+    .cert-single-card:hover .cert-btn-link {
+      background-color: #64396c;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="portfolio-container">
+    <!-- Link sutil de retorno -->
+    <div class="back-nav">
+      <a href="index.html" class="back-link" title="Voltar para a página inicial">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        Início
+      </a>
+    </div>
+
+    <!-- Seção de Perfil (clicável para voltar ao início) -->
+    <header>
+      <a href="index.html" class="profile-section" title="Voltar para o início">
+        <div class="profile-avatar-wrapper">
+          <img src="assets/profile.png" alt="Foto de Mayara Barboza Silva" class="profile-avatar">
+        </div>
+        <h1 class="profile-name">Mayara Barboza Silva</h1>
+        <p class="profile-role">Desenvolvedora Front-end no Programa Trilhas</p>
+      </a>
+    </header>
+
+    <!-- Card único de Certificados com fotozinha redirecionando ao Google Drive -->
+    <a href="https://drive.google.com/drive/folders/1rUgLy8ZLee8XyFVfN5Ju1ygU4KbuIM3o?usp=drive_link" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="cert-single-card"
+       title="Clique para abrir a pasta de certificados no Google Drive">
+      
+      <div class="cert-image-wrapper">
+        <img src="assets/certificados-banner.svg" alt="Pasta de Certificados no Google Drive">
+      </div>
+
+      <h2 class="cert-title">Certificados & Formações</h2>
+      <p class="cert-desc">
+        Acesse todos os meus certificados do <strong>Programa Trilhas</strong>, incluindo a formação em <strong>UX/UI Designer</strong>, workshops de capacitação e atividades práticas armazenadas no Google Drive.
+      </p>
+
+      <div class="cert-btn-link">
+        Acessar Certificados no Google Drive &nearr;
+      </div>
+    </a>
+
+    <!-- Ícones de Redes Sociais e Contato -->
+    <footer class="social-footer">
+      <a href="https://github.com/mayarabarbosasilva1999-sudo" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+      </a>
+
+      <a href="https://www.linkedin.com/in/mayara-barboza-silva-a03254346" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24">
+          <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.45 1.45 0 1 0 0-2.9 1.45 1.45 0 0 0 0 2.9m1.37 9.74v-8.37H5.1v8.37h2.73z"/>
+        </svg>
+      </a>
+
+      <a href="mailto:mayarabarbosasilva1999@gmail.com" class="social-icon" aria-label="E-mail de Contato" title="mayarabarbosasilva1999@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+      </a>
+    </footer>
+  </main>
+
+</body>
+</html>

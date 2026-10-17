@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Depurador Mirim | Caça-Bugs</title>
+  <style>
+    
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 50%, #ddd6fe 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: #4c1d95;
+}
+.game-card {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(76, 29, 149, 0.15);
+  padding: 28px;
+  max-width: 560px;
+  width: 100%;
+  text-align: center;
+  border: 2px solid #c4b5fd;
+}
+.header-badge {
+  display: inline-block;
+  background: #ede9fe;
+  color: #6d28d9;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+h1 { font-size: 26px; color: #4c1d95; margin-bottom: 8px; }
+p.desc { font-size: 14px; color: #4b5563; margin-bottom: 20px; }
+.stats-bar {
+  display: flex;
+  justify-content: space-around;
+  background: #f5f3ff;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd6fe;
+}
+.stat-box { font-size: 14px; font-weight: 600; color: #7c3aed; }
+.stat-val { font-size: 20px; font-weight: 700; color: #4c1d95; display: block; }
+.btn-action {
+  background: #7c3aed;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-action:hover { background: #6d28d9; transform: translateY(-1px); }
+.back-link {
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #4c1d95;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+}
+.back-link:hover { text-decoration: underline; }
+
+    .code-editor {
+      background: #1e1e2e;
+      color: #f8f8f2;
+      border-radius: 12px;
+      padding: 18px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 15px;
+      text-align: left;
+      margin-bottom: 20px;
+      border: 2px solid #6d28d9;
+      line-height: 1.6;
+    }
+    .options-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .bug-opt {
+      background: #ffffff;
+      border: 2px solid #ddd6fe;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #4c1d95;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .bug-opt:hover { background: #ede9fe; }
+    .bug-opt.correct { background: #22c55e !important; color: white !important; border-color: #16a34a !important; }
+    .bug-opt.wrong { background: #ef4444 !important; color: white !important; border-color: #dc2626 !important; }
+  </style>
+</head>
+<body>
+  <div class="game-card">
+    <span class="header-badge">🐛 Depuração de Código</span>
+    <h1>Caça aos Bugs</h1>
+    <p class="desc">Qual é o bug de sintaxe no código exibido abaixo?</p>
+
+    <div class="stats-bar">
+      <div class="stat-box">Bug<span class="stat-val" id="bug-num">1/4</span></div>
+      <div class="stat-box">Pontos<span class="stat-val" id="score">0</span></div>
+    </div>
+
+    <div class="code-editor" id="code-snippet">&lt;p&gt;Olá Mundo!&lt;/h1&gt;</div>
+    <div class="options-grid" id="options"></div>
+
+    <a href="../../projetos.html" class="back-link">← Voltar ao Portfólio</a>
+  </div>
+
+  <script>
+    
+const AudioCtx = window.AudioContext || window.webkitAudioContext;
+let ctx;
+function playSound(type) {
+  try {
+    if (!ctx) ctx = new AudioCtx();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    if (type === 'correct') {
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(783.99, ctx.currentTime + 0.15);
+      gain.gain.setValueAtTime(0.3, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.25);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.25);
+    } else {
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(220, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(130, ctx.currentTime + 0.2);
+      gain.gain.setValueAtTime(0.3, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.25);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.25);
+    }
+  } catch(e) {}
+}
+
+    const bugCases = [
+      {
+        code: '<p>Olá Mundo!</p>\n<img src="foto.png alt="Foto">',
+        bug: 'Falta fechar as aspas no atributo src="foto.png"',
+        options: [
+          'A tag <p> não deveria ter texto dentro.',
+          'Falta fechar as aspas no atributo src="foto.png"',
+          'A imagem precisaria de tag de fechamento </img>.',
+          'Não é permitido usar a extensão .png.'
+        ]
+      },
+      {
+        code: '.btn {\n  background-color: blue\n  color: white;\n}',
+        bug: 'Falta o ponto e vírgula (;) após a cor blue',
+        options: [
+          'A palavra blue não é uma cor aceita em CSS.',
+          'Falta o ponto e vírgula (;) após a cor blue',
+          'A propriedade color deve ser escrita em maiúsculas.',
+          'Não se usa chaves {} em classes CSS.'
+        ]
+      },
+      {
+        code: '<h1>Título Principal</p>',
+        bug: 'Tag de fechamento incompatível: abriu <h1> e fechou com </p>',
+        options: [
+          'Tag de fechamento incompatível: abriu <h1> e fechou com </p>',
+          'A tag <h1> deve conter obrigatoriamente um link.',
+          'Títulos não aceitam acentos no texto.',
+          'O HTML precisa de ponto e vírgula após cada tag.'
+        ]
+      },
+      {
+        code: '<a href=index.html>Voltar</a>',
+        bug: 'Faltam as aspas em volta do link "index.html"',
+        options: [
+          'A tag <a> não suporta a palavra Voltar.',
+          'Faltam as aspas em volta do link "index.html"',
+          'O link precisa começar com https://obrigatoriamente.',
+          'A tag correta seria <link>.'
+        ]
+      }
+    ];
+
+    let current = 0, score = 0, locked = false;
+
+    function renderBug() {
+      locked = false;
+      const b = bugCases[current];
+      document.getElementById('bug-num').textContent = (current + 1) + '/' + bugCases.length;
+      document.getElementById('code-snippet').textContent = b.code;
+
+      const optBox = document.getElementById('options');
+      optBox.innerHTML = '';
+      b.options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'bug-opt';
+        btn.textContent = opt;
+        btn.onclick = () => {
+          if (locked) return;
+          locked = true;
+          if (opt === b.bug) {
+            playSound('correct');
+            btn.classList.add('correct');
+            score += 25;
+            document.getElementById('score').textContent = score;
+          } else {
+            playSound('wrong');
+            btn.classList.add('wrong');
+          }
+          setTimeout(() => {
+            if (current + 1 < bugCases.length) {
+              current++;
+              renderBug();
+            } else {
+              alert('🎉 Bug Hunter de Elite! Você depurou todos os códigos com ' + score + ' pontos!');
+            }
+          }, 800);
+        };
+        optBox.appendChild(btn);
+      });
+    }
+
+    renderBug();
+  </script>
+</body>
+</html>

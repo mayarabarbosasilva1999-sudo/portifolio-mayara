@@ -1,0 +1,316 @@
+/* ===================================================
+   PORTFÓLIO FRONT-END - PROGRAMA TRILHAS
+   Estilo fiel ao layout do Figma
+   =================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #1e1e1e;
+  background-color: #faf9fd;
+  /* Gradiente mesh suave idêntico ao Figma */
+  background-image: 
+    radial-gradient(circle at 92% 10%, rgba(196, 166, 233, 0.75) 0%, rgba(196, 166, 233, 0) 55%),
+    radial-gradient(circle at 6% 92%, rgba(236, 175, 232, 0.78) 0%, rgba(236, 175, 232, 0) 52%),
+    radial-gradient(circle at 8% 50%, rgba(214, 223, 247, 0.45) 0%, rgba(214, 223, 247, 0) 45%),
+    radial-gradient(circle at 92% 65%, rgba(210, 217, 246, 0.38) 0%, rgba(210, 217, 246, 0) 45%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 24px 16px;
+}
+
+/* Container Principal Centralizado */
+.portfolio-container {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Seção do Perfil */
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.profile-avatar-wrapper {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 12px;
+}
+
+.profile-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(120, 100, 125, 0.35);
+  display: block;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.profile-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1e1e1e;
+  margin-bottom: 4px;
+  letter-spacing: -0.2px;
+}
+
+.profile-role {
+  font-size: 13px;
+  font-weight: 400;
+  color: #1e1e1e;
+  letter-spacing: -0.1px;
+}
+
+/* Lista de Botões da Home (index.html) */
+.links-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.btn-primary {
+  width: 350px;
+  max-width: 100%;
+  height: 40px;
+  background-color: #ebdceb;
+  border: 1px solid #7d6b82;
+  border-radius: 6px;
+  color: #1e1e1e;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.btn-primary:hover {
+  background-color: #e2cee2;
+  border-color: #635268;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(125, 107, 130, 0.15);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  background-color: #dac2da;
+}
+
+/* Página Sobre Mim */
+.about-section {
+  max-width: 480px;
+  width: 100%;
+  margin-bottom: 28px;
+}
+
+.about-text {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #1e1e1e;
+  text-align: center;
+}
+
+/* Página Meus Projetos - Grid 2x2 */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 260px);
+  gap: 12px;
+  width: 100%;
+  max-width: 532px;
+  margin-bottom: 28px;
+  justify-content: center;
+}
+
+.project-card {
+  background-color: #ebdceb;
+  border: 1px solid #7d6b82;
+  border-radius: 6px;
+  padding: 8px 8px 10px 8px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(125, 107, 130, 0.18);
+}
+
+.project-thumbnail {
+  width: 100%;
+  height: 82px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.project-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Padrão quadriculado transparente Figma */
+.checker-pattern {
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(45deg, #f0f0f0 25%, transparent 25%), 
+    linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #f0f0f0 75%), 
+    linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+  background-color: #ffffff;
+}
+
+.project-link {
+  align-self: flex-start;
+  margin-top: 8px;
+  margin-left: 2px;
+  font-size: 12px;
+  color: #1e1e1e;
+  text-decoration: underline;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.project-link:hover {
+  color: #000000;
+  font-weight: 600;
+}
+
+/* Página Certificados */
+.certificates-container {
+  width: 350px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.cert-card {
+  background-color: #ebdceb;
+  border: 1px solid #7d6b82;
+  border-radius: 6px;
+  padding: 12px 16px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: #1e1e1e;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.cert-card:hover {
+  background-color: #e2cee2;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(125, 107, 130, 0.15);
+}
+
+/* Botão de Retorno / Navegação secundária */
+.back-nav {
+  margin-bottom: 16px;
+}
+
+.back-link {
+  font-size: 12px;
+  color: #55445b;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background-color: rgba(235, 220, 235, 0.5);
+  border: 1px solid rgba(125, 107, 130, 0.25);
+  transition: all 0.2s ease;
+}
+
+.back-link:hover {
+  background-color: rgba(235, 220, 235, 0.85);
+  color: #1e1e1e;
+}
+
+/* Redes Sociais no Rodapé */
+.social-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #1e1e1e;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.social-icon:hover {
+  opacity: 0.75;
+  transform: scale(1.1);
+}
+
+.social-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Responsividade Mobile */
+@media (max-width: 580px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    max-width: 350px;
+  }
+  
+  .btn-primary {
+    width: 100%;
+  }
+}

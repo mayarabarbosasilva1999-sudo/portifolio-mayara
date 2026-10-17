@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogos de Língua Portuguesa | Portfólio de Jogos</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .cat-container {
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      margin: 0 auto;
+    }
+    .cat-badge {
+      display: inline-block;
+      background: #ebdceb;
+      border: 1px solid #7d6b82;
+      color: #1e1e1e;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .cat-title {
+      font-size: 26px;
+      font-weight: 700;
+      color: #1e1e1e;
+      margin-bottom: 8px;
+    }
+    .cat-desc {
+      font-size: 14px;
+      color: #374151;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+    .games-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 580px) {
+      .games-list { grid-template-columns: 1fr; }
+    }
+    .game-item-card {
+      background: #ebdceb;
+      border: 1px solid #7d6b82;
+      border-radius: 10px;
+      padding: 16px;
+      text-decoration: none;
+      color: #1e1e1e;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .game-item-card:hover {
+      background: #e2cee2;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(125, 107, 130, 0.2);
+    }
+    .game-item-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    .game-item-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: #1e1e1e;
+    }
+    .game-item-desc {
+      font-size: 12px;
+      color: #4b5563;
+      line-height: 1.4;
+      margin-bottom: 12px;
+      flex-grow: 1;
+    }
+    .game-item-play {
+      font-size: 12px;
+      font-weight: 600;
+      color: #1e1e1e;
+      text-decoration: underline;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="cat-container">
+    <div class="back-nav" style="margin-bottom: 16px;">
+      <a href="../projetos.html" class="back-link">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        Voltar aos Projetos
+      </a>
+    </div>
+
+    <span class="cat-badge">Alfabetização & Vocabulário</span>
+    <h1 class="cat-title">📖 Jogos de Língua Portuguesa</h1>
+    <p class="cat-desc">Expanda seu vocabulário, pratique ortografia, sinônimos e gramática de maneira lúdica!</p>
+
+    <div class="games-list">
+      
+        <a href="caca-palavras/index.html" class="game-item-card">
+          <div class="game-item-icon">🔤</div>
+          <div class="game-item-title">Caça-Palavras</div>
+          <div class="game-item-desc">Encontre as palavras escondidas na grade de letras!</div>
+          <span class="game-item-play">Jogar agora &rarr;</span>
+        </a>
+        \n
+        <a href="soletrando/index.html" class="game-item-card">
+          <div class="game-item-icon">💡</div>
+          <div class="game-item-title">Acerte a Palavra (Soletrando)</div>
+          <div class="game-item-desc">Descubra as letras certas a partir da dica contextual!</div>
+          <span class="game-item-play">Jogar agora &rarr;</span>
+        </a>
+        \n
+        <a href="sinonimos-antonimos/index.html" class="game-item-card">
+          <div class="game-item-icon">🤝</div>
+          <div class="game-item-title">Par Perfeito (Sinônimos)</div>
+          <div class="game-item-desc">Conecte os pares de palavras com o mesmo significado!</div>
+          <span class="game-item-play">Jogar agora &rarr;</span>
+        </a>
+        \n
+        <a href="quiz-gramatica/index.html" class="game-item-card">
+          <div class="game-item-icon">📝</div>
+          <div class="game-item-title">Quiz de Ortografia</div>
+          <div class="game-item-desc">Aprenda quando usar 'mas/mais', 'por que' e muito mais!</div>
+          <span class="game-item-play">Jogar agora &rarr;</span>
+        </a>
+        
+    </div>
+
+    <footer class="social-footer">
+      <a href="https://github.com/mayarabarbosasilva1999-sudo" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/mayara-barboza-silva-a03254346" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24">
+          <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.45 1.45 0 1 0 0-2.9 1.45 1.45 0 0 0 0 2.9m1.37 9.74v-8.37H5.1v8.37h2.73z"/>
+        </svg>
+      </a>
+    </footer>
+  </main>
+
+</body>
+</html>
